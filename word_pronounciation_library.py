@@ -88,6 +88,3 @@ class youdao():
 
         # 返回声音文件路径
         return self._filePath
-
-a = youdao('word')
-a.down()
