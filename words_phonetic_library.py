@@ -1,6 +1,6 @@
 '''
 author SryMkr
-date: 2021.8.10
+date: 2021.11.3
 the function of this library is for downloading words' phonetics
 有时候单词比较多会不下载，但是也不是找不到的原因，可能是网络问题
 最好的办法就是我们已经下载好了，尽量网络的还有机器的依赖
@@ -15,7 +15,7 @@ from xlutils.copy import copy
 import xlrd
 
 
-# write content into excel.xls  format: list[word,phonetic]
+# write format: list[word,phonetic] into excel.xls
 # 最不好的地方就是得一个个打开一个个复制，时间开销太大，不过做实验是够了
 def write_excel_xls_append(path, value):
     # get the len of value 只有两个所以为2
@@ -38,9 +38,12 @@ def write_excel_xls_append(path, value):
     # save file 覆盖原文件
     new_workbook.save(path)
 
+# write_excel_xls_append('Words_phonetic\sis.xls',['word', 'wəːd'])  实验代码
+
+
 
 # check whether the words in excel.xls
-def read_excel_xls(path,word):
+def read_excel_xls(path, word):
     # open workbook
     workbook = xlrd.open_workbook(path)
     # get all sheets by sheet names
@@ -54,6 +57,9 @@ def read_excel_xls(path,word):
         return True
     else:
         return False
+# 试验代码
+# print(read_excel_xls('Words_phonetic\sis.xls', 'f'))
+
 
 
 # phonetic alphabet class
@@ -114,7 +120,7 @@ class OxfordDictionary():
             write_excel_xls_append(self._filePath, list)
 
 
-# get the word phonetic in excel.xls   path使用绝对路径和相对路径都可以
+# get the word phonetic in excel.xls   path使用绝对路径和相对路径都可以 这个主要是在游戏中显示需要
 def get_word_pho(path,word):
     # open workbook
     workbook = xlrd.open_workbook(path)
