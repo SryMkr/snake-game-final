@@ -19,7 +19,7 @@ ALPHABET_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 FRAME_WIDTH = 30
 
 
-# add correct  alphabet,正确单词图片在这修改
+# add correct  alphabet,正确单词图片主要是要添加在蛇尾部
 class Snakebody_alphabet(MySprite_food):
     def __init__(self, frame_nuber):
         MySprite_food.__init__(self)
@@ -27,14 +27,14 @@ class Snakebody_alphabet(MySprite_food):
         self.draw_current_frame(frame_nuber)
 
 
-# add wrong alphabet,错误单词图片在这修改
+# add wrong alphabet,错误单词图片在这修改主要是添加在蛇尾部
 class wrong_alphabet(MySprite_food):
     def __init__(self, frame_nuber):
         MySprite_food.__init__(self)
         self.load_multi_frames("Game_Pictures/NEW_AL1.png", FRAME_WIDTH, FRAME_WIDTH, 13)
         self.draw_current_frame(frame_nuber)
 
-# show general texts on the screen
+# show general texts on the screen 主要是在屏幕上显示
 def print_text(font_size, x_coordinate, y_coordinate, text, color=(0, 0, 0)):
     # return a surface
     text_img = font_size.render(text, True, color)
@@ -44,7 +44,7 @@ def print_text(font_size, x_coordinate, y_coordinate, text, color=(0, 0, 0)):
     screen.blit(text_img, (x_coordinate, y_coordinate))
 
 
-# show game results of screen，最多只能训练20个单词
+# show game results of screen，最多只能训练20个单词，主要是游戏结束以后显示玩家已经记住的单词 这里其实可以显示正确的，玩家自己拼写的，以及汉语翻译
 def print_result(font_size, x_start, y_start, list, color=(0,0,0)):
     # get window/screen/display surface  return surface
     screen = pygame.display.get_surface()
@@ -62,7 +62,7 @@ def print_result(font_size, x_start, y_start, list, color=(0,0,0)):
             y_start += 120
 
 
-# get index of words task 现在是直接把所有的单词保留进去，以后就是用一个加一个
+# get index of words task 现在是直接把所有的单词保留进去，单词编号，第几个字母编号，以及单词在字母表中的编号 '1-1': 14
 # get the counterpart index of alphabet
 def built_spelling_dic(task_list, alphabet_list):
     # create empty dictionary
@@ -89,7 +89,7 @@ def built_spelling_dic(task_list, alphabet_list):
     return spelling_dic
 
 
-# set audio of game
+# set audio of game  游戏声音
 def game_audio(filename,volumn=0.1,times = 0):
     #initialize the mixer
     pygame.mixer.init()
@@ -128,7 +128,7 @@ def food_random_position(snake_head_x_coordinate,snake_head_y_coordinate,wrong_l
 
 
 
-# define two variate with two method respectively
+# define two variate with two method respectively 设定两个变量，控制蛇的方向
 class two_Variate(object):
     # define two private variates
     def __init__(self, variate_one, variate_two):
