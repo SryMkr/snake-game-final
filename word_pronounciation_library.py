@@ -1,22 +1,30 @@
-# import package
-# the function of this library is for pronunciation
-# 下载单词发音还是没问题的，就是有一点单词里面不能有空格，不然找不到源文件
+'''
+author SryMkr
+date: 2021.11.6
+the function of this library is to download words' pronunciation
+本函数的作用是一个个下载发音，但是单词如果有空格会找不到发音，需要在文件里自己一个个改
+本页函数在游戏中没有需要使用的地方，在毕业之前本页函数没有任何需要改的地方 在游戏函数中没有需要该的地方
+'''
 
+
+# import package
 import os
 import urllib.request
 
-# define youdao class
+
+# 下载的是有道的发音
 class youdao():
+    # 看下载的是美音还是英音
     def __init__(self, word, type=1):
         '''
         type = 0：美音
         type = 1：英音
         '''
-        word = word.lower()  # 小写
+        word = word.lower()  # 改小写
         self._type = type  # 发音方式
-        self._word = word  # 单词
+        self._word = word  # 要下载的单词单词
 
-        # get file path
+        # get file path 下载到那个发音的文件夹
         self._dirRoot = os.path.dirname(os.path.abspath(__file__))
         if 0 == self._type:
             self._dirSpeech = os.path.join(self._dirRoot, 'Speech_US')  # 美音库
@@ -33,13 +41,13 @@ class youdao():
             # 不存在，就创建
             os.makedirs('Speech_EN')
 
-        # get the pronouciation path
+        # get the pronouciation path 得到最终要下载到的文件夹
         if 0 == self._type:
             self._dirSpeech = os.path.join(self._dirRoot, 'Speech_US')  # 美音库
         else:
             self._dirSpeech = os.path.join(self._dirRoot, 'Speech_EN')  # 英音库
 
-
+    #  看单词是否已经存在
     def _getWordMp3FilePath(self, word):
         '''
         获取单词的MP3本地文件路径
