@@ -1,13 +1,12 @@
 '''
 author: SryMkr
-date: 2021.3.11
+date: 2021.11.6
 this function is for load record
 '''
 
 # import packages
 from Other_library import print_text, FRAME_WIDTH
-import pygame, sys
-from pygame.locals import *
+import pygame
 from xlutils.copy import copy
 import xlrd
 
