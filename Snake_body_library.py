@@ -50,13 +50,13 @@ class Snake_body_Sprite(pygame.sprite.Sprite):
             start_velocity = two_Variate(0, 0)
             # adding food according to snake moving direction
             if self.velocity.first_variate < 0:  # left
-                start_velocity.variate_one = 30
+                start_velocity.first_variate = 30
             elif self.velocity.first_variate > 0:  # right
-                start_velocity.variate_one = -30
+                start_velocity.first_variate = -30
             if self.velocity.second_variate < 0:   # up
-                start_velocity.variate_two = 30
+                start_velocity.second_variate = 30
             elif self.velocity.second_variate > 0:  # down
-                start_velocity.variate_two = -30
+                start_velocity.second_variate = -30
             # set x&y coordinate of food
             alphabet_collision.x_coordinate = self.segments[last].x_coordinate + start_velocity.first_variate
             alphabet_collision.y_coordinate = self.segments[last].y_coordinate + start_velocity.second_variate
